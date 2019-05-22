@@ -6,10 +6,107 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Manipulação de Arquivos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="xlsx.full.min.js"></script>
+  <script src="index.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
+  <style>
+      nav { background-color: #fff; color: #000}
+      a.brand-logo.center {color: rgba(0,0,0,0.5) }
+    </style>
+    <head>
+      <title>Maniputação de Contas</title>
+    </head>
 <body>
-  <input type="text" id="pesquisa">
+    
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Maniputação de Arquivos</a>
+    </div>
+  </nav> 
+
+  <div class="section">
+    <h4 class="container light">Converter</h4>
+    <br>
+    <div class="row container">
+      <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">Converter Planilha
+        <i class="material-icons right">add_circle_outline</i>
+      </button>
+    </div>
+
+  </div> <!-- Converter -->
+  
+  <div class="section">
+    <h4 class="container light">Busca</h4>
+    <br>
+    <div class="row container">
+      <div class="col s12">
+        
+        <!-- elementos -->
+
+      </div>
+    </div>
+    <div class="row container">
+      <button class="btn waves-effect waves-light" name="action" onclick="">Botão
+        <i class="material-icons right">add_circle_outline</i>
+      </button>
+    </div>
+  </div> <!-- Sessão de busca -->
+
+  <br><br><br><br><br>
+
+  <h5 class="container light">Tabela</h5>
+  <div class="section container">
+    <div class="divider"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>ta</th>
+          <th>ta</th>
+          <th>ta</th>
+        </tr>
+      </thead>
+  
+      <tbody id="tabela">
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- Tabela -->
+
+  <div class="row container">
+    <button class="btn waves-effect waves-light" name="action" onclick="pagar()">pagar conta
+      <i class="material-icons right">attach_money</i>
+    </button>
+
+    <button type="submit" class="btn waves-effect waves-light" name="action" onclick="pagarTudo()">pagar tudo
+      <i class="material-icons right">format_line_spacing</i>
+    </button>
+  </div> <!-- pagar() -->
+
+  <br><br><br><br><br>
+
+
+  <br>
+
+  <footer class="page-footer footer teal lighten-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Ciência da Computação</h5>
+                    <p class="grey-text text-lighten-4">Estrutura de Dados.</p>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 Maniputação de Arquivos
+                <a class="grey-text text-lighten-4 right" href="#!">Mais Links</a>
+            </div>
+        </div>
+  </footer>
   <script>
     M.AutoInit();
   </script>
