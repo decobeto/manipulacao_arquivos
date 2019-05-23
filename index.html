@@ -7,9 +7,13 @@
   <title>Manipulação de Arquivos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet"nshref="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="xlsx.full.min.js"></script>
   <script src="index.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
   <style>
       nav { background-color: #fff; color: #000}
       a.brand-logo.center {color: rgba(0,0,0,0.5) }
@@ -26,33 +30,31 @@
   </nav> 
 
   <div class="section">
-    <h4 class="container light">Converter</h4>
-    <br>
-    <div class="row container">
-      <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">Converter Planilha
-        <i class="material-icons right">add_circle_outline</i>
-      </button>
-    </div>
-
-  </div> <!-- Converter -->
-  
-  <div class="section">
     <h4 class="container light">Busca</h4>
-    <br>
     <div class="row container">
-      <div class="col s12">
-        
-        <!-- elementos -->
-
-      </div>
+        <div class="col s12">
+          <!-- elementos -->
+        </div>
     </div>
     <div class="row container">
-      <button class="btn waves-effect waves-light" name="action" onclick="">Botão
-        <i class="material-icons right">add_circle_outline</i>
+      <input placeholder="Buscar palavras ou arquivos" id="busca" type="text" class="input-field col s8">
+      <button class="btn waves-effect waves-light" name="action" onclick="">
+        <i class="fas fa-search"></i>
       </button>
     </div>
   </div> <!-- Sessão de busca -->
 
+  <div class="section">
+    <h4 class="container light">Converter</h4>
+    <br>
+    <div class="row container">
+      <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">
+        <i class="fas fa-desktop"></i>
+        Converter Planilha
+      </button>
+    </div>
+  </div> <!-- Converter -->
+  
   <br><br><br><br><br>
 
   <h5 class="container light">Tabela</h5>
@@ -102,7 +104,6 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2019 Maniputação de Arquivos
-                <a class="grey-text text-lighten-4 right" href="#!">Mais Links</a>
             </div>
         </div>
   </footer>
