@@ -1,5 +1,3 @@
-
-
 function convert() {
     /* set up XMLHttpRequest */
     var url = "arquivos-planilhas/1.xlsx";
@@ -25,17 +23,20 @@ function convert() {
     var worksheet = workbook.Sheets[first_sheet_name];
     var dados = XLSX.utils.sheet_to_json(worksheet,{raw:true});
     console.log(dados);
-    window.localStorage.setItem
-    console.log(dados[1].Informação)
+    console.log(dados[1])
 
-    insertLocalStorage(dados)
+    setLocalStorage(dados)
     }
 
     oReq.send();
 }
 
-function insertLocalStorage(dados) {
+function setLocalStorage(dados) {
     for(var item = 0; item <= dados.length; item++) {
-        window.localStorage.setItem(dados[item].Nome, dados[item].Informação)
+        window.localStorage.setItem(item, JSON.stringify({name: dados[item].Nome, information: dados[item].Informação}))
     }
+}
+
+function clearLocalStorage() {
+    window.localStorage.clear()
 }

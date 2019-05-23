@@ -17,10 +17,11 @@
   <style>
       nav { background-color: #fff; color: #000}
       a.brand-logo.center {color: rgba(0,0,0,0.5) }
-    </style>
-    <head>
-      <title>Maniputação de Contas</title>
-    </head>
+      .section {padding-top: 2rem; padding-bottom: 2rem}
+  </style>
+  <head>
+    <title>Maniputação de Contas</title>
+  </head>
 <body>
     
   <nav>
@@ -49,8 +50,12 @@
     <br>
     <div class="row container">
       <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">
-        <i class="fas fa-desktop"></i>
+        <i class="material-icons right">add</i>
         Converter Planilha
+      </button>
+      <button type="submit" class="btn waves-effect waves-light" name="action" onclick="clearLocalStorage()">
+        <i class="material-icons right">remove</i>
+        Limpar localStorage
       </button>
     </div>
   </div> <!-- Converter -->
