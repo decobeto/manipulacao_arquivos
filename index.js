@@ -23,8 +23,19 @@ function convert() {
     var first_sheet_name = workbook.SheetNames[0];
     /* Get worksheet */
     var worksheet = workbook.Sheets[first_sheet_name];
-    console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+    var dados = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+    console.log(dados);
+    window.localStorage.setItem
+    console.log(dados[1].Informação)
+
+    insertLocalStorage(dados)
     }
 
     oReq.send();
+}
+
+function insertLocalStorage(dados) {
+    for(var item = 0; item <= dados.length; item++) {
+        window.localStorage.setItem(dados[item].Nome, dados[item].Informação)
+    }
 }
