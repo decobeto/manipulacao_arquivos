@@ -33,7 +33,9 @@ function convert() {
 
 function setLocalStorage(dados) {
     for(var item = 0; item <= dados.length; item++) {
-        window.localStorage.setItem(item, JSON.stringify({name: dados[item].Nome, information: dados[item].Informação}))
+        //converter dado para JSON
+        //armazenar
+        window.localStorage.setItem(item, JSON.stringify(dados))
     }
 }
 
