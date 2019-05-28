@@ -95,10 +95,11 @@ var count = 0
 function cleanTable() {
   console.log("limpar")
 
-  var elemento = document.getElementById("searchTable");
-    
+  var tabela = document.getElementById("searchTable");
     if( count > 0 ) {
-      elemento.deleteRow(1)
+      while (tabela.rows.length > 1) {
+        tabela.deleteRow(1)
+      }
       console.log("limpou")
     }
     count++
@@ -110,9 +111,9 @@ function searchWord(word) {
     // converte registro em objeto
     let reg = JSON.parse(window.localStorage.getItem(item))
 
-    // busca nome
-    var resultName = reg.Nome.indexOf(word) > -1;
-    var resultInform = reg.Informação.indexOf(word) > -1;
+    // busca nome ignorando maisculas e minusculas
+    var resultName = reg.Nome.search(word) > -1
+    var resultInform = reg.Informação.search(word) > -1
     if(resultName === true) {
       insertTable(item, reg)
     } else if(resultInform === true) {
