@@ -14,7 +14,10 @@
 </head>
 
   <style>
- 
+    #search {width: 25%}
+    input#field.form-control::placeholder {
+      color: rgb(0, 0, 0, 0.60)
+    }
   </style>
   <head>
     <title>Maniputação de Contas</title>
@@ -23,12 +26,12 @@
     
   <nav>
     <div class="nav-wrapper teal lighten-2">
-      &nbsp<a href="#" class="brand-logo" style="color: #fff">Manipulação de Arquivos</a>
-      <div class="right">
+      <a href="#" class="brand-logo" style="color: #fff">Manipulação de Arquivos</a>
+      <div id="search" class="right">
         <form>
           <div class="input-field">
-            <input id="field" type="search" class="form-control" required autofocus/>
-          <label class="label-icon" for="field" style="color: #abb7b7"><i class="material-icons">search</i></label>
+            <input placeholder="Registro, Nome ou Informação" id="field" type="search" class="form-control" required autofocus/>
+            <label class="label-icon" for="field" style="color: #abb7b7"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
         </form>

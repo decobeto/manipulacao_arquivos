@@ -55,7 +55,6 @@ function salvandoNoArmazenamento(){
 
 // SEARCH
 // captura input do campo search
-
 var input = document.getElementById('field')
 
 input.addEventListener("keyup", function(event) {
@@ -63,29 +62,31 @@ input.addEventListener("keyup", function(event) {
 		event.preventDefault()
 
     value = document.getElementById('field').value
-    search(value)
+    searchKey(value)
 		//document.getElementById("btn").click()
 	}
 })
 
 function inputField() {return document.getElementById('field').value}
 
-function search(value){
+function searchKey(value){
   let registro = JSON.parse(window.localStorage.getItem(value))
 
   cleanTable()
-  insertTable(value, registro)
+  if(registro != null) {
+    insertTable(value, registro)
+  } else {
+    searchWord(value)
+  }  
 }
 
 // retornar valores da busca para a tabela
 function insertTable(value, registro) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
-  if(registro != null) {
-    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informações + "</td>"
-  } else {
-    row.innerHTML = "<td>" + "Registro não encontrador" + "<td>"
-  }
+  
+  // imprime todo o registro na tabela
+  row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
 }
 
 var count = 0
@@ -93,14 +94,6 @@ var count = 0
 // remove todos os nós filhos de um elemento
 function cleanTable() {
   console.log("limpar")
-  // var tabela = document.getElementById('tabelaPesquisa');
-  // tabela.innerHTML = ''
-
-  // var elemento = document.getElementById("tabelaPesquisa");
-  // while (elemento.firstChild) {
-  //   elemento.removeChild(elemento.lastChild);
-  //   console.log('limpou' + elemento.removeChild(elemento.lastChild))
-  // }
 
   var elemento = document.getElementById("searchTable");
     
@@ -110,6 +103,24 @@ function cleanTable() {
     }
     count++
 }
+
+// pesquisa por nome
+function searchWord(word) {
+  for (var item = 0; item <= localStorage.length; item++) {
+    // converte registro em objeto
+    let reg = JSON.parse(window.localStorage.getItem(item))
+
+    // busca nome
+    var resultName = reg.Nome.indexOf(word) > -1;
+    var resultInform = reg.Informação.indexOf(word) > -1;
+    if(resultName === true) {
+      insertTable(item, reg)
+    } else if(resultInform === true) {
+      insertTable(item, reg)
+    }
+  }
+} 
+
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
 //         console.log(registro.Nome)
