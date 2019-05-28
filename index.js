@@ -56,14 +56,6 @@ function salvandoNoArmazenamento(){
 // SEARCH
 // captura input do campo search
 
-function inputField() {return document.getElementById('field').value}
-
-function search(value){
-  console.log(value)
-  let registro = JSON.parse(window.localStorage.getItem(value))
-  insertTable(value, registro)
-}
-
 var input = document.getElementById('field')
 
 input.addEventListener("keyup", function(event) {
@@ -76,13 +68,48 @@ input.addEventListener("keyup", function(event) {
 	}
 })
 
+function inputField() {return document.getElementById('field').value}
+
+function search(value){
+  let registro = JSON.parse(window.localStorage.getItem(value))
+
+  cleanTable()
+  insertTable(value, registro)
+}
+
 // retornar valores da busca para a tabela
 function insertTable(value, registro) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
-  row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
+  if(registro != null) {
+    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informações + "</td>"
+  } else {
+    row.innerHTML = "<td>" + "Registro não encontrador" + "<td>"
+  }
 }
 
+var count = 0
+
+// remove todos os nós filhos de um elemento
+function cleanTable() {
+  console.log("limpar")
+  // var tabela = document.getElementById('tabelaPesquisa');
+  // tabela.innerHTML = ''
+
+  // var elemento = document.getElementById("tabelaPesquisa");
+  // while (elemento.firstChild) {
+  //   elemento.removeChild(elemento.lastChild);
+  //   console.log('limpou' + elemento.removeChild(elemento.lastChild))
+  // }
+
+  var elemento = document.getElementById("searchTable");
+    
+    if( count > 0 ) {
+      elemento.deleteRow(1)
+      console.log("limpou")
+    }
+    count++
+}
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
 //         console.log(registro.Nome)
