@@ -7,12 +7,10 @@
   <title>Manipulação de Arquivos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet"nshref="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="index.css">
-  <script src="index.js"></script>
 </head>
 
   <style>
@@ -29,8 +27,8 @@
       <div class="right">
         <form>
           <div class="input-field">
-            <input type="search" id="search" class="form-control" required autofocus/>
-            <label class="label-icon" for="search" style="color: #abb7b7"><i class="material-icons">search</i></label>
+            <input id="field" type="search" class="form-control" required autofocus/>
+          <label class="label-icon" for="field" style="color: #abb7b7"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
         </form>
@@ -40,7 +38,7 @@
   </nav> 
   <br />
   <br />
-
+  
   <h5 class="container light">Adicionar Arquivos</h5>
   <div class="section container">
     <div class="row">
@@ -75,10 +73,10 @@
           <th>ta</th>
         </tr>
       </thead>
-  
+
   <div class="section">
     <h4 class="container light">Tabela</h4>
-      <table class="highlight container">
+      <table id="searchTable" class="highlight container">
         <thead>
           <tr>
               <th>Registro</th>
@@ -88,9 +86,6 @@
         </thead>
         <tbody>
           <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
           </tr>
         </tbody>
       </table>
@@ -99,34 +94,29 @@
   <div class="divider"></div>
 
   <div class="section">
-    <h4 class="container light">Gravar novo registro</h4>
+    <h4 class="container light">Adicionar Arquivos</h4>
     <div class="row container">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s3">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="key" type="number" class="validate">
-              <label for="key">Registro</label>
-            </div>
-            <div class="input-field col s9">
-              <i class="material-icons prefix">phone</i>
-              <input id="name" type="text" class="validate">
-              <label for="name">Nome</label>
-            </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="description" type="text" class="validate">
-                <label for="description">Descrição</label>
-              </div>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="nome" class="materialize-textarea" />
+            <label for="nome">Nome</label>
           </div>
-        </form>
-    </div>
-    <div class="row container">
-      <button class="btn waves-effect waves-light" name="action" type="submit">Gravar
-          <i class="material-icons right">add</i>
-      </button>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="informacao" class="materialize-textarea"></textarea>
+            <label for="informacao">Informação</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+            <i class="material-icons right">send</i>
+        </button>
+      </form>
     </div>
   </div>
+
+  <div class="divider"></div>
 
   <div class="section container">
     <ul class="collapsible">
@@ -142,7 +132,7 @@
                   <tr>
                       <th>Registro</th>
                       <th>Nome</th>
-                      <th>Descrição</th>
+                      <th>Informação</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -205,8 +195,8 @@
         </div>
     </div>
   </footer>
-  <script>
-    M.AutoInit();
-  </script>
+  
+  <script src="index.js"></script>
+  <script src="materialize.js"></script>
 </body>
 </html>

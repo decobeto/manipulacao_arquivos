@@ -44,8 +44,6 @@ function clearLocalStorage() {
   window.localStorage.clear()
 }
 
-// Gravando novos registros
-
 function salvandoNoArmazenamento(){
   event.preventDefault();
   let ultimaKey = localStorage.length;
@@ -53,6 +51,36 @@ function salvandoNoArmazenamento(){
   let campos = { "Nome": document.querySelector('#nome').value, "Informação": document.querySelector('#informacao').value};
   window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos));
   console.log(campos)
+}
+
+// SEARCH
+// captura input do campo search
+
+function inputField() {return document.getElementById('field').value}
+
+function search(value){
+  console.log(value)
+  let registro = JSON.parse(window.localStorage.getItem(value))
+  insertTable(value, registro)
+}
+
+var input = document.getElementById('field')
+
+input.addEventListener("keyup", function(event) {
+	if(event.keyCode === 20) {
+		event.preventDefault()
+
+    value = document.getElementById('field').value
+    search(value)
+		//document.getElementById("btn").click()
+	}
+})
+
+// retornar valores da busca para a tabela
+function insertTable(value, registro) {
+  let table = document.getElementById('searchTable')
+  let row = table.insertRow(1)
+  row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
 }
 
 // console.log(JSON.parse(window.localStorage.getItem(item)))
