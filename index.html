@@ -19,6 +19,7 @@
     a.brand-logo.center {color: rgba(0,0,0,0.5) }
     .section {padding-top: 2rem; padding-bottom: 5rem}
     nav .brand-logo {padding-left: 2rem}
+    h4 {padding-bottom: 2rem}
   </style>
   <head>
     <title>Maniputação de Contas</title>
@@ -31,33 +32,105 @@
       <div class="right">
         <form>
           <div class="input-field">
-            <input id="search" type="search" required>
+            <input type="search" id="search" class="form-control" required autofocus/>
             <label class="label-icon" for="search" style="color: #abb7b7"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
         </form>
       </div>
     </div>
-  </nav> 
+  </nav> <!-- NAVBAR -->
 
-  <h5 class="container light">Tabela</h5>
-  <div class="section container">
-    <div class="divider"></div>
-    <table>
-      <thead>
-        <tr>
-          <th>ta</th>
-          <th>ta</th>
-          <th>ta</th>
-        </tr>
-      </thead>
   
-      <tbody id="tabela">
-        <tr>
-        </tr>
-      </tbody>
-    </table>
+  <div class="section">
+    <h4 class="container light">Tabela</h4>
+      <table class="highlight container">
+        <thead>
+          <tr>
+              <th>Registro</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+        </tbody>
+      </table>
   </div> <!-- Tabela -->
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h4 class="container light">Gravar novo registro</h4>
+    <div class="row container">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s3">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="key" type="number" class="validate">
+              <label for="key">Registro</label>
+            </div>
+            <div class="input-field col s9">
+              <i class="material-icons prefix">phone</i>
+              <input id="name" type="text" class="validate">
+              <label for="name">Nome</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="description" type="text" class="validate">
+                <label for="description">Descrição</label>
+              </div>
+          </div>
+        </form>
+    </div>
+    <div class="row container">
+      <button class="btn waves-effect waves-light" name="action" type="submit">Gravar
+          <i class="material-icons right">add</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="section container">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">filter_drama</i>
+          Novo registros
+          <span class="new badge">0</span></div>
+        <div class="collapsible-body">
+            <div class="row container">
+              <table class="highlight container">
+                <thead>
+                  <tr>
+                      <th>Registro</th>
+                      <th>Nome</th>
+                      <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+            </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">place</i>
+          Todos os registros
+          <span class="badge">1</span></div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
 
   <div class="section">
     <h4 class="container light">Converter</h4>
@@ -75,10 +148,6 @@
   </div> <!-- Converter -->
 
   <div class="row container">
-    <button class="btn waves-effect waves-light" name="action" onclick="pagar()">pagar conta
-      <i class="material-icons right">attach_money</i>
-    </button>
-
     <button type="submit" class="btn waves-effect waves-light" name="action" onclick="pagarTudo()">pagar tudo
       <i class="material-icons right">format_line_spacing</i>
     </button>
