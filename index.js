@@ -44,43 +44,36 @@ function clearLocalStorage() {
   window.localStorage.clear()
 }
 
-// Gravando novos registros
+// SEARCH
 
-var campos = [
-    document.querySelector('#key'),
-    document.querySelector('#name'),
-    document.querySelector('#description')
-]
+// captura input do campo search
 
-console.log(campos)
+function inputField() {return document.getElementById('field').value}
 
-var tbody = document.querySelector('table tbody')
+function search(value){
+  console.log(value)
+  let registro = JSON.parse(window.localStorage.getItem(value))
+  insertTable(value, registro)
+}
 
-document.querySelector('.form').addEventListener('submit', function(event) {
-    
-    // cancelando a submissão do formulário
-    event.preventDefault()
+var input = document.getElementById('field')
 
-    var tr = document.createElement('tr')
+input.addEventListener("keyup", function(event) {
+	if(event.keyCode === 20) {
+		event.preventDefault()
 
-    campos.forEach(function(campo) {
-        // cria uma td sem informações
-        var td = document.createElement('td')
-
-        // atribui o valor do campo à td
-        td.textContent = campo.value
-
-        //adiciona a td na tr
-        tr.appendChild(td)
-    })
-
-    // limpa o campo da data
-    campos[0].value = 1
-    // limpa o campo da quantidade
-    campos[1].value = ''
-    // limpa o campo do valor
-    campos[2].value = ''
+    value = document.getElementById('field').value
+    search(value)
+		//document.getElementById("btn").click()
+	}
 })
+
+// retornar valores da busca para a tabela
+function insertTable(value, registro) {
+  let table = document.getElementById('searchTable')
+  let row = table.insertRow(1)
+  row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
+}
 
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
