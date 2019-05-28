@@ -10,16 +10,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet"nshref="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="xlsx.full.min.js"></script>
-  <script src="index.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
 </head>
 
   <style>
-    nav { background-color: #fff; color: #000}
-    a.brand-logo.center {color: rgba(0,0,0,0.5) }
-    .section {padding-top: 2rem; padding-bottom: 5rem}
-    nav .brand-logo {padding-left: 2rem}
-    h4 {padding-bottom: 2rem}
+ 
   </style>
   <head>
     <title>Maniputação de Contas</title>
@@ -60,7 +57,7 @@
             <label for="informacao">Informação</label>
           </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+        <button class="btn waves-effect waves-light" type="button" name="action" onclick="salvandoNoArmazenamento()">Enviar
             <i class="material-icons right">send</i>
         </button>
       </form>
