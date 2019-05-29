@@ -87,8 +87,9 @@ function insertTable(value, registro) {
   
   // imprime todo o registro na tabela
   row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
-  + "<a class=\"waves-effect waves-light btn-small\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
-  + "<a class=\"waves-effect waves-light btn-small\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">remove</i></a>"
+  + "<a class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Editar Registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
+  + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">remove</i></a>"
+  init()
 }
 
 var count = 0
@@ -123,6 +124,17 @@ function searchWord(word) {
     }
   }
 } 
+
+// removendo item
+
+function removeItem(value) {
+  window.localStorage.removeItem(value)
+
+  cleanTable()
+  M.toast({html: 'Registro ' + value + ' removido!'})
+}
+
+function init() { M.AutoInit() }
 
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
