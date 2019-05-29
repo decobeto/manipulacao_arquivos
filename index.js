@@ -87,6 +87,8 @@ function insertTable(value, registro) {
   
   // imprime todo o registro na tabela
   row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
+  + "<a class=\"waves-effect waves-light btn-small\"><i class=\"material-icons\">edit</i></a>"
+  + "<a class=\"waves-effect waves-light btn-small\"><i class=\"material-icons\">remove</i></a>"
 }
 
 var count = 0
