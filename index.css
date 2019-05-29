@@ -12,3 +12,11 @@ nav .brand-logo {
 h4 {
   padding-bottom: 2rem
 }
+
+#search {
+  width: 25%
+}
+
+input#field.form-control::placeholder {
+  color: rgb(0, 0, 0, 0.60)
+}
