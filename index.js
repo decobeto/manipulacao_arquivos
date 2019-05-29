@@ -77,12 +77,8 @@ function searchKey(value){
   let registro = JSON.parse(window.localStorage.getItem(value))
 
   cleanTable()
-  if(registro != null) {
-    insertTable(value, registro)
-    countRegistro++
-  } else {
-    searchWord(value)
-  }  
+
+  typeof(value) === 'number' ? insertTable(value,registro) : searchWord(value) 
 }
 
 // retornar valores da busca para a tabela
@@ -90,18 +86,19 @@ function insertTable(value, registro) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
   
-  // imprime todo o registro na tabela
-  row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
-  + "<a class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Editar Registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
-  + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
+  if(registro != null) {
+    // imprime todo o registro na tabela
+    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
+    + "<a class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Editar Registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
+    + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
+  }
   init()
 }
 
-function insertTableNull(value) {
+function insertTableNull (value) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
-  
-  // imprime todo o registro na tabela
+
   row.innerHTML = "<td>" + value + "</td>"
 }
 
@@ -123,9 +120,14 @@ function cleanTable() {
 
 // pesquisa por nome
 function searchWord(word) {
-  for (var item = 0; item < localStorage.length; item++) {
+  search: for (var item = 0; item < localStorage.length; item++) {
     // converte registro em objeto
     let reg = JSON.parse(window.localStorage.getItem(item))
+    
+    if(reg === null) {
+      item++
+      continue search
+    }
 
     // busca nome ignorando maisculas e minusculas
     var resultName = reg.Nome.search(word) > -1
@@ -140,7 +142,7 @@ function searchWord(word) {
   }
 
   if(countRegistro === 0) {
-    insertTableNull('Não existe registro correspondente ao valor informador')
+    insertTableNull('Não existe registro correspondente ao valor informado')
   }
 } 
 
