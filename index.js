@@ -195,3 +195,13 @@ function init() { M.AutoInit() }
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
 //         console.log(registro.Nome)
+function ordenar(){
+  if(localStorage.length > 0){
+     var localStorageArray = new Array();
+     for (i=0;i<localStorage.length;i++){
+         localStorageArray[i] = localStorage.key(i)+localStorage.getItem(localStorage.key(i));
+     }
+  }
+  var sortedArray = localStorageArray.sort();
+  console.log(sortedArray); 
+}
