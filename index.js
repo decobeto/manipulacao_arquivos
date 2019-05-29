@@ -78,9 +78,7 @@ function searchKey(value){
 
   cleanTable()
 
-  // typeof(value) === 'number' ? insertTable(value,registro) : searchWord(value) 
-  insertTable(value,registro)
-  searchWord(value) 
+  typeof(value) === 'number' ? insertTable(value,registro) : searchWord(value) 
 }
 
 // retornar valores da busca para a tabela
@@ -93,8 +91,6 @@ function insertTable(value, registro) {
     row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
     + "<a class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Editar Registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
     + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
-
-    countRegistro++
   }
   init()
 }
@@ -120,7 +116,6 @@ function cleanTable() {
       console.log("limpou")
     }
     count++
-    init()
 }
 
 // pesquisa por nome
