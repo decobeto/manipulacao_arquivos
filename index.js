@@ -58,10 +58,12 @@ function salvandoNoArmazenamento(){
 // SEARCH
 // captura input do campo search
 var input = document.getElementById('field')
+var countRegistro = 0
 
 input.addEventListener("keyup", function(event) {
 	if(event.keyCode === 20) {
-		event.preventDefault()
+    event.preventDefault()
+    countRegistro = 0
 
     value = document.getElementById('field').value
     searchKey(value)
@@ -77,6 +79,7 @@ function searchKey(value){
   cleanTable()
   if(registro != null) {
     insertTable(value, registro)
+    countRegistro++
   } else {
     searchWord(value)
   }  
@@ -92,6 +95,14 @@ function insertTable(value, registro) {
   + "<a class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"right\" data-tooltip=\"Editar Registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
   + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
   init()
+}
+
+function insertTableNull(value) {
+  let table = document.getElementById('searchTable')
+  let row = table.insertRow(1)
+  
+  // imprime todo o registro na tabela
+  row.innerHTML = "<td>" + value + "</td>"
 }
 
 var count = 0
@@ -112,7 +123,7 @@ function cleanTable() {
 
 // pesquisa por nome
 function searchWord(word) {
-  for (var item = 0; item <= localStorage.length; item++) {
+  for (var item = 0; item < localStorage.length; item++) {
     // converte registro em objeto
     let reg = JSON.parse(window.localStorage.getItem(item))
 
@@ -121,9 +132,15 @@ function searchWord(word) {
     var resultInform = reg.Informação.search(word) > -1
     if(resultName === true) {
       insertTable(item, reg)
+      countRegistro++
     } else if(resultInform === true) {
       insertTable(item, reg)
+      countRegistro++
     }
+  }
+
+  if(countRegistro === 0) {
+    insertTableNull('Não existe registro correspondente ao valor informador')
   }
 } 
 
