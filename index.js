@@ -200,7 +200,7 @@ function ordenar(){
          localStorageArray[i] = localStorage.getItem(localStorage.key(i));
      }
   }else{
-   alert("É necessário clicar em 'Converter Planilha' primeiro") 
+   alert("É necessário clicar em Converter Planilha' primeiro") 
   }
   var arrayOrdenado = localStorageArray.sort();
   console.log(arrayOrdenado); 
