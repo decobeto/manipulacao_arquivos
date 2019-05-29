@@ -197,9 +197,11 @@ function ordenar(){
   if(localStorage.length > 0){
      var localStorageArray = new Array();
      for (i=0;i<localStorage.length;i++){
-         localStorageArray[i] = localStorage.key(i)+localStorage.getItem(localStorage.key(i));
+         localStorageArray[i] = localStorage.getItem(localStorage.key(i));
      }
+  }else{
+   alert("É necessário clicar em 'Converter Planilha' primeiro") 
   }
-  var sortedArray = localStorageArray.sort();
-  console.log(sortedArray); 
+  var arrayOrdenado = localStorageArray.sort();
+  console.log(arrayOrdenado); 
 }
