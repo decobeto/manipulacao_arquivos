@@ -51,6 +51,8 @@ function salvandoNoArmazenamento(){
   let campos = { "Nome": document.querySelector('#nome').value, "Informação": document.querySelector('#informacao').value};
   window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos));
   console.log(campos)
+  document.querySelector('#nome').value = " ";
+  document.querySelector('#informacao').value = " ";
 }
 
 // SEARCH
