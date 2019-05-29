@@ -153,14 +153,13 @@ function searchWord(word) {
 // EDITAR ITEM
 
 function editItem(value) {
-  // exite editar
+  cleanTable()
+
   document.getElementById('editar').style.display = "block"
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 
 function editar(value){
-  cleanTable()
-
   document.getElementById('editar').style.display = "none"
   event.preventDefault();
   let campos = { "Nome": document.querySelector('#nomeEdit').value, "Informação": document.querySelector('#informacaoEdit').value};
@@ -173,7 +172,6 @@ function editar(value){
 }
 
 function cancelar(value) {
-  cleanTable()
   document.getElementById('editar').style.display = "none"
   document.querySelector('#nomeEdit').value = " ";
   document.querySelector('#informacaoEdit').value = " ";
