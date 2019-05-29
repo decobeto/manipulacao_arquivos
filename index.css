@@ -21,3 +21,12 @@ h4 {
 input#field.form-control::placeholder {
   color: rgb(0, 0, 0, 0.60);
 }
+
+a.brand-logo {
+  font-family: 'Nixie One', cursive;
+  /* font-family: 'Raleway', sans-serif; */
+}
+
+h4.container.light{
+  font-family: 'Nixie One', sans-serif; 
+}
