@@ -110,15 +110,16 @@
       <form action="#">
         <div class="file-field input-field">
           <div class="btn">
-            <span>ARQUIVO</span>
+            <i class="material-icons">file_upload</i>
             <input type="file">
           </div>
           <div class="file-path-wrapper">
-            <input id="arquivo" class="file-path validate" type="text">
+            <input id="arquivo" class="file-path validate" type="text" style="width: 60%">
           </div>
         </div>
       </form>
     </div>
+    <br />
     <div class="row container">
       <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">
         <i class="material-icons right">add</i>
@@ -132,6 +133,22 @@
         <i class="material-icons right">cached</i>
         Ordenar
       </button>
+    </div>
+
+    <div class="section">
+      <h4 class="container light">Tabela Ordenada</h4>
+      <div style="overflow:scroll;height:300px;width:100%;overflow:auto">
+        <table id="TabelaOrdenada" class="highlight container">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Informações</th>
+            </tr>
+          </thead>
+          <tbody id="TabelaOrdenadaTbody">
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <footer class="page-footer footer teal lighten-2">
