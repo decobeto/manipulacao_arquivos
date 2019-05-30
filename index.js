@@ -1,6 +1,12 @@
 function convert() {
   /* set up XMLHttpRequest */
-  var url = "arquivos-planilhas/1.xlsx";
+  clearLocalStorage()
+  var url = ""
+  if (document.getElementById('arquivo').value === " ") {
+    url = "arquivos-planilhas/1.xlsx"
+  } else {
+    url = "arquivos-planilhas/" + document.getElementById('arquivo').value;
+  }
   var oReq = new XMLHttpRequest();
   oReq.open("GET", url, true);
   oReq.responseType = "arraybuffer";
