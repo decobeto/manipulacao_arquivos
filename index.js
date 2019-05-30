@@ -220,7 +220,7 @@ function ordenar() {
   if (localStorage.length > 0) {
     var localStorageArray = new Array();
     for (i = 0; i < localStorage.length; i++) {
-      localStorageArray[i] = localStorage.getItem(localStorage.key(i));
+      localStorageArray[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
     }
   } else {
     alert("É necessário clicar em Converter Planilha' primeiro");
