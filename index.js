@@ -50,11 +50,14 @@ function clearLocalStorage() {
   window.localStorage.clear()
 }
 
-function salvandoNoArmazenamento(){
+function salvandoNoArmazenamento() {
   event.preventDefault();
   let ultimaKey = localStorage.length;
   let keyDoItemSalvo = ultimaKey + 1;
-  let campos = { "Nome": document.querySelector('#nome').value, "Informação": document.querySelector('#informacao').value};
+  let campos = {
+    "Nome": document.querySelector('#nome').value,
+    "Informação": document.querySelector('#informacao').value
+  };
   window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos));
   console.log(campos)
   document.querySelector('#nome').value = " ";
@@ -66,45 +69,47 @@ function salvandoNoArmazenamento(){
 var input = document.getElementById('field')
 var countRegistro = 0
 
-input.addEventListener("keyup", function(event) {
-	if(event.keyCode === 20) {
+input.addEventListener("keyup", function (event) {
+  if (event.keyCode === 20) {
     event.preventDefault()
     countRegistro = 0
 
     value = document.getElementById('field').value
     searchKey(value)
-		//document.getElementById("btn").click()
-	}
+    //document.getElementById("btn").click()
+  }
 })
 
-function inputField() {return document.getElementById('field').value}
+function inputField() {
+  return document.getElementById('field').value
+}
 
-function searchKey(value){
+function searchKey(value) {
   let registro = JSON.parse(window.localStorage.getItem(value))
 
   cleanTable()
 
   // typeof(value) === 'number' ? insertTable(value,registro) : searchWord(value) 
-  insertTable(value,registro)
-  searchWord(value) 
+  insertTable(value, registro)
+  searchWord(value)
 }
 
 // retornar valores da busca para a tabela
 function insertTable(value, registro) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
-  
-  if(registro != null) {
+
+  if (registro != null) {
     // imprime todo o registro na tabela
-    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>"
-    + "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped scrollLink\" href=\"#editar\" data-position=\"right\" data-tooltip=\"Editar registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>"
-    + "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
+    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" +
+      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped scrollLink\" href=\"#editar\" data-position=\"right\" data-tooltip=\"Editar registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
+      "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
     countRegistro++
   }
   init()
 }
 
-function insertTableNull (value) {
+function insertTableNull(value) {
   let table = document.getElementById('searchTable')
   let row = table.insertRow(1)
 
@@ -118,14 +123,14 @@ function cleanTable() {
   console.log("limpar")
 
   var tabela = document.getElementById("searchTable");
-    if( count > 0 ) {
-      while (tabela.rows.length > 1) {
-        tabela.deleteRow(1)
-      }
-      console.log("limpou")
+  if (count > 0) {
+    while (tabela.rows.length > 1) {
+      tabela.deleteRow(1)
     }
-    count++
-    init()
+    console.log("limpou")
+  }
+  count++
+  init()
 }
 
 // pesquisa por nome
@@ -133,8 +138,8 @@ function searchWord(word) {
   search: for (var item = 0; item < localStorage.length; item++) {
     // converte registro em objeto
     let reg = JSON.parse(window.localStorage.getItem(item))
-    
-    if(reg === null) {
+
+    if (reg === null) {
       item++
       continue search
     }
@@ -142,19 +147,19 @@ function searchWord(word) {
     // busca nome ignorando maisculas e minusculas
     var resultName = reg.Nome.search(word) > -1
     var resultInform = reg.Informação.search(word) > -1
-    if(resultName === true) {
+    if (resultName === true) {
       insertTable(item, reg)
       countRegistro++
-    } else if(resultInform === true) {
+    } else if (resultInform === true) {
       insertTable(item, reg)
       countRegistro++
     }
   }
 
-  if(countRegistro === 0) {
+  if (countRegistro === 0) {
     insertTableNull('Não existe registro correspondente ao valor informado')
   }
-} 
+}
 
 // EDITAR ITEM
 
@@ -165,16 +170,21 @@ function editItem(value) {
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 
-function editar(value){
+function editar(value) {
   document.getElementById('editar').style.display = "none"
   event.preventDefault();
-  let campos = { "Nome": document.querySelector('#nomeEdit').value, "Informação": document.querySelector('#informacaoEdit').value};
+  let campos = {
+    "Nome": document.querySelector('#nomeEdit').value,
+    "Informação": document.querySelector('#informacaoEdit').value
+  };
   window.localStorage.setItem(value, JSON.stringify(campos));
 
   document.querySelector('#nomeEdit').value = " ";
   document.querySelector('#informacaoEdit').value = " ";
-  
-  M.toast({html: 'Registro ' + value + ' editado!'})
+
+  M.toast({
+    html: 'Registro ' + value + ' editado!'
+  })
 }
 
 function cancelar(value) {
@@ -182,7 +192,9 @@ function cancelar(value) {
   document.querySelector('#nomeEdit').value = " ";
   document.querySelector('#informacaoEdit').value = " ";
 
-  M.toast({html: 'Registro ' + value + ' não editado!'})
+  M.toast({
+    html: 'Registro ' + value + ' não editado!'
+  })
 }
 
 // removendo item
@@ -191,24 +203,42 @@ function removeItem(value) {
   window.localStorage.removeItem(value)
 
   cleanTable()
-  M.toast({html: 'Registro ' + value + ' removido!'})
+  M.toast({
+    html: 'Registro ' + value + ' removido!'
+  })
 }
 
-function init() { M.AutoInit() }
+function init() {
+  M.AutoInit()
+}
 
 // console.log(JSON.parse(window.localStorage.getItem(item)))
 //         var registro = JSON.parse(window.localStorage.getItem(item))
 //         console.log(registro.Nome)
 
-function ordenar(){
-  if(localStorage.length > 0){
-     var localStorageArray = new Array();
-     for (i=0;i<localStorage.length;i++){
-         localStorageArray[i] = localStorage.getItem(localStorage.key(i));
-     }
-  }else{
-   alert("É necessário clicar em Converter Planilha' primeiro") 
+function ordenar() {
+  if (localStorage.length > 0) {
+    var localStorageArray = new Array();
+    for (i = 0; i < localStorage.length; i++) {
+      localStorageArray[i] = localStorage.getItem(localStorage.key(i));
+    }
+  } else {
+    alert("É necessário clicar em Converter Planilha' primeiro");
   }
   var arrayOrdenado = localStorageArray.sort();
-  console.log(arrayOrdenado); 
+  console.log(arrayOrdenado);
+
+  montaTabelaOrdenada(arrayOrdenado);
+}
+
+function montaTabelaOrdenada(arrayOrdenado) {
+  let tbody = document.querySelector('#tabelaOrdenadaTbody');
+  console.log(tbody);
+  let tr = document.createElement('tr');
+  arrayOrdenado.forEach(function (campo) {
+    let td = document.createElement('td');
+    td.textContent = campo.value;
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
 }
