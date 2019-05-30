@@ -218,18 +218,25 @@ function init() {
 
 function ordenar() {
   cleanTable('tabelaOrdenada')
-  if (localStorage.length > 0) {
-    var localStorageArray = new Array();
-    for (i = 0; i < localStorage.length; i++) {
-      localStorageArray[i] = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    }
-  } else {
-    alert("É necessário clicar em Converter Planilha' primeiro");
-  }
-  var arrayOrdenado = localStorageArray.sort();
-  console.log(arrayOrdenado);
 
-  montaTabelaOrdenada(arrayOrdenado);
+  if (localStorage.length > 0) {
+    let localStorageArray = new Array();
+    for (i = 0; i < localStorage.length; i++) {
+      localStorageArray[i] = localStorage.getItem(localStorage.key(i));
+    }
+
+    let ArrayOrdenado = localStorageArray.sort()
+    let ArrayOrdenadoObj = new Array()
+    for (i = 0; i < ArrayOrdenado.length; i++) {
+      ArrayOrdenadoObj[i] = JSON.parse(ArrayOrdenado[i]);
+    }
+
+    montaTabelaOrdenada(ArrayOrdenadoObj);
+  } else {
+    M.toast({
+      html: 'É necessário clicar em Converter \'Planilha\' primeiro'
+    })
+  }
 }
 
 function montaTabelaOrdenada(arrayOrdenado) {
