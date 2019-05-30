@@ -119,10 +119,10 @@ function insertTableNull(value) {
 var count = 0
 
 // remove todos os nós filhos de um elemento
-function cleanTable() {
+function cleanTable(table) {
   console.log("limpar")
 
-  var tabela = document.getElementById("searchTable");
+  var tabela = document.getElementById('searchTable');
   if (count > 0) {
     while (tabela.rows.length > 1) {
       tabela.deleteRow(1)
@@ -164,7 +164,7 @@ function searchWord(word) {
 // EDITAR ITEM
 
 function editItem(value) {
-  cleanTable()
+  cleanTable('searchTable')
 
   document.getElementById('editar').style.display = "block"
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
@@ -202,7 +202,7 @@ function cancelar(value) {
 function removeItem(value) {
   window.localStorage.removeItem(value)
 
-  cleanTable()
+  cleanTable('searchTable')
   M.toast({
     html: 'Registro ' + value + ' removido!'
   })
@@ -217,6 +217,7 @@ function init() {
 //         console.log(registro.Nome)
 
 function ordenar() {
+  cleanTable('tabelaOrdenada')
   if (localStorage.length > 0) {
     var localStorageArray = new Array();
     for (i = 0; i < localStorage.length; i++) {
@@ -232,13 +233,24 @@ function ordenar() {
 }
 
 function montaTabelaOrdenada(arrayOrdenado) {
-  let tbody = document.querySelector('#tabelaOrdenadaTbody');
-  console.log(tbody);
-  let tr = document.createElement('tr');
+  let tbody = document.querySelector('#tabelaOrdenadaTbody')
+  console.log(tbody)
+  let count = 0
   arrayOrdenado.forEach(function (campo) {
-    let td = document.createElement('td');
-    td.textContent = campo.value;
-    tr.appendChild(td);
+    let tr = document.createElement('tr')
+    let tdRegistro = document.createElement('td')
+    let tdNome = document.createElement('td')    
+    let tdInformacao = document.createElement('td')
+
+    tdRegistro.textContent = count
+    tdNome.textContent = campo.Nome
+    tdInformacao.textContent = campo.Informação
+    
+    tr.appendChild(tdRegistro)
+    tr.appendChild(tdNome)
+    tr.appendChild(tdInformacao)
+    
+    tbody.appendChild(tr)
+    count++
   });
-  tbody.appendChild(tr);
 }
