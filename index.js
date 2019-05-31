@@ -218,7 +218,6 @@ function init() {
 
 function ordenar() {
   cleanTable('tabelaOrdenada')
-  document.getElementById('botaoDownload').style.display = "inline"
 
   if (localStorage.length > 0) {
     let localStorageArray = new Array();
@@ -291,7 +290,7 @@ function download_csv(csv, filename) {
 
 function export_table_to_csv(html, filename) {
 var csv = [];
-var rows = document.querySelectorAll("#tabelaOrdenadaTbody");
+var rows = document.querySelectorAll("#tabelaOrdenada tr");
 
   for (var i = 0; i < rows.length; i++) {
   var row = [], cols = rows[i].querySelectorAll("td, th");
@@ -307,6 +306,6 @@ var rows = document.querySelectorAll("#tabelaOrdenadaTbody");
 }
 
 document.querySelector("#botaoDownload").addEventListener("click", function () {
-  var html = document.querySelector("#tabelaOrdenadaTbody").outerHTML;
-  export_table_to_csv(html, "tabela.csv");
+  var html = document.querySelector("#tabelaOrdenada").outerHTML;
+export_table_to_csv(html, "tabelaOrdenada.csv");
 });
