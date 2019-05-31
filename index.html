@@ -133,6 +133,10 @@
         <i class="material-icons right">cached</i>
         Ordenar
       </button>
+      <button type="submit" class="btn waves-effect waves-light" name="action" id="botaoDownload">
+        <i class="material-icons">file_download</i>
+        Donwload Tabela Ordenada
+      </button>
     </div>
   </div>
 
@@ -153,39 +157,37 @@
     </div>
   </div>
 
-    <footer class="page-footer footer teal lighten-2">
+  <footer class="page-footer footer teal lighten-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Ciência da Computação</h5>
+          <p class="grey-text text-lighten-4">Estrutura de Dados.</p>
+        </div>
+        <br />
+      </div>
+    </div>
+    <div class="footer-copyright">
       <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Ciência da Computação</h5>
-            <p class="grey-text text-lighten-4">Estrutura de Dados.</p>
-          </div>
-          <br />
-        </div>
+        © 2019 Maniputação de Arquivos
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2019 Maniputação de Arquivos
-        </div>
-      </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="materialize.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        M.AutoInit();
-      });
-
-      // Ancora
-      var $doc = $('html, body');
-      $('.scrollLink').click(function () {
-        $doc.animate({
-          scrollTop: $($.attr(this, 'href')).offset().top
-        }, 1000);
-        return false;
-      });
-    </script>
-    <script src="index.js"></script>
+  <script src="materialize.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      M.AutoInit();
+    });
+    // Ancora
+    var $doc = $('html, body');
+    $('.scrollLink').click(function () {
+      $doc.animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+      }, 1000);
+      return false;
+    });
+  </script>
+  <script src="index.js"></script>
 </body>
-
 </html>
