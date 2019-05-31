@@ -218,6 +218,7 @@ function init() {
 
 function ordenar() {
   cleanTable('tabelaOrdenada')
+  document.getElementById('botaoDownload').style.display = "inline"
 
   if (localStorage.length > 0) {
     let localStorageArray = new Array();
@@ -307,5 +308,5 @@ var rows = document.querySelectorAll("#tabelaOrdenadaTbody");
 
 document.querySelector("#botaoDownload").addEventListener("click", function () {
   var html = document.querySelector("#tabelaOrdenadaTbody").outerHTML;
-export_table_to_csv(html, "tabela.csv");
+  export_table_to_csv(html, "tabela.csv");
 });

@@ -7,6 +7,10 @@ nav {
   display: none
 }
 
+#botaoDownload {
+  /* display: none*/
+}
+
 a.brand-logo.center {color: rgba(0,0,0,0.5); }
 .section {padding-top: 2rem; padding-bottom: 5rem; }
 
