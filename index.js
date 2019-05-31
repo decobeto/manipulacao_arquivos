@@ -17,7 +17,7 @@ function convert() {
     /* convert data to binary string */
     var data = new Uint8Array(arraybuffer)
     var arr = new Array()
-    for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i])
+    for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
     var bstr = arr.join("")
 
     /* Call XLSX */
