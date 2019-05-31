@@ -5,38 +5,38 @@ function convert() {
   if (document.getElementById('arquivo').value === " ") {
     url = "arquivos-planilhas/1.xlsx"
   } else {
-    url = "arquivos-planilhas/" + document.getElementById('arquivo').value;
+    url = "arquivos-planilhas/" + document.getElementById('arquivo').value
   }
-  var oReq = new XMLHttpRequest();
-  oReq.open("GET", url, true);
-  oReq.responseType = "arraybuffer";
+  var oReq = new XMLHttpRequest()
+  oReq.open("GET", url, true)
+  oReq.responseType = "arraybuffer"
 
   oReq.onload = function (e) {
-    var arraybuffer = oReq.response;
+    var arraybuffer = oReq.response
 
     /* convert data to binary string */
-    var data = new Uint8Array(arraybuffer);
-    var arr = new Array();
-    for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-    var bstr = arr.join("");
+    var data = new Uint8Array(arraybuffer)
+    var arr = new Array()
+    for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i])
+    var bstr = arr.join("")
 
     /* Call XLSX */
     var workbook = XLSX.read(bstr, {
       type: "binary"
-    });
+    })
 
     /* DO SOMETHING WITH workbook HERE */
-    var first_sheet_name = workbook.SheetNames[0];
+    var first_sheet_name = workbook.SheetNames[0]
     /* Get worksheet */
-    var worksheet = workbook.Sheets[first_sheet_name];
+    var worksheet = workbook.Sheets[first_sheet_name]
     var dados = XLSX.utils.sheet_to_json(worksheet, {
       raw: true
-    });
+    })
 
     setLocalStorage(dados)
   }
 
-  oReq.send();
+  oReq.send()
 }
 
 function setLocalStorage(dados) {
@@ -51,17 +51,17 @@ function clearLocalStorage() {
 }
 
 function salvandoNoArmazenamento() {
-  event.preventDefault();
-  let ultimaKey = localStorage.length;
-  let keyDoItemSalvo = ultimaKey + 1;
+  event.preventDefault()
+  let ultimaKey = localStorage.length
+  let keyDoItemSalvo = ultimaKey + 1
   let campos = {
     "Nome": document.querySelector('#nome').value,
     "Informação": document.querySelector('#informacao').value
-  };
-  window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos));
+  }
+  window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos))
   console.log(campos)
-  document.querySelector('#nome').value = " ";
-  document.querySelector('#informacao').value = " ";
+  document.querySelector('#nome').value = " "
+  document.querySelector('#informacao').value = " "
 }
 
 // SEARCH
@@ -122,7 +122,7 @@ var count = 0
 function cleanTable(table) {
   console.log("limpar")
 
-  var tabela = document.getElementById('searchTable');
+  var tabela = document.getElementById('searchTable')
   if (count > 0) {
     while (tabela.rows.length > 1) {
       tabela.deleteRow(1)
@@ -172,15 +172,15 @@ function editItem(value) {
 
 function editar(value) {
   document.getElementById('editar').style.display = "none"
-  event.preventDefault();
+  event.preventDefault()
   let campos = {
     "Nome": document.querySelector('#nomeEdit').value,
     "Informação": document.querySelector('#informacaoEdit').value
-  };
-  window.localStorage.setItem(value, JSON.stringify(campos));
+  }
+  window.localStorage.setItem(value, JSON.stringify(campos))
 
-  document.querySelector('#nomeEdit').value = " ";
-  document.querySelector('#informacaoEdit').value = " ";
+  document.querySelector('#nomeEdit').value = " "
+  document.querySelector('#informacaoEdit').value = " "
 
   M.toast({
     html: 'Registro ' + value + ' editado!'
@@ -189,8 +189,8 @@ function editar(value) {
 
 function cancelar(value) {
   document.getElementById('editar').style.display = "none"
-  document.querySelector('#nomeEdit').value = " ";
-  document.querySelector('#informacaoEdit').value = " ";
+  document.querySelector('#nomeEdit').value = " "
+  document.querySelector('#informacaoEdit').value = " "
 
   M.toast({
     html: 'Registro ' + value + ' não editado!'
@@ -220,18 +220,19 @@ function ordenar() {
   cleanTable('tabelaOrdenada')
 
   if (localStorage.length > 0) {
-    let localStorageArray = new Array();
+    document.getElementById('botaoDownload').style.display = "inline"
+    let localStorageArray = new Array()
     for (i = 0; i < localStorage.length; i++) {
-      localStorageArray[i] = localStorage.getItem(localStorage.key(i));
+      localStorageArray[i] = localStorage.getItem(localStorage.key(i))
     }
 
     let ArrayOrdenado = localStorageArray.sort()
     let ArrayOrdenadoObj = new Array()
     for (i = 0; i < ArrayOrdenado.length; i++) {
-      ArrayOrdenadoObj[i] = JSON.parse(ArrayOrdenado[i]);
+      ArrayOrdenadoObj[i] = JSON.parse(ArrayOrdenado[i])
     }
 
-    montaTabelaOrdenada(ArrayOrdenadoObj);
+    montaTabelaOrdenada(ArrayOrdenadoObj)
   } else {
     M.toast({
       html: 'É necessário clicar em Converter \'Planilha\' primeiro'
@@ -259,53 +260,54 @@ function montaTabelaOrdenada(arrayOrdenado) {
     
     tbody.appendChild(tr)
     count++
-  });
+  })
 }
 
 function download_csv(csv, filename) {
-  var csvFile;
-  var downloadLink;
+  var csvFile
+  var downloadLink
 
   // CSV FILE
-  csvFile = new Blob([csv], {type: "text/csv"});
+  csvFile = new Blob([csv], {type: "text/csv"})
 
   // Download link
-  downloadLink = document.createElement("a");
+  downloadLink = document.createElement("a")
 
   // File name
-  downloadLink.download = filename;
+  downloadLink.download = filename
 
   // We have to create a link to the file
-  downloadLink.href = window.URL.createObjectURL(csvFile);
+  downloadLink.href = window.URL.createObjectURL(csvFile)
 
   // Make sure that the link is not displayed
-  downloadLink.style.display = "none";
+  downloadLink.style.display = "none"
 
   // Add the link to your DOM
-  document.body.appendChild(downloadLink);
+  document.body.appendChild(downloadLink)
 
   // Lanzamos
-  downloadLink.click();
+  downloadLink.click()
 }
 
 function export_table_to_csv(html, filename) {
-var csv = [];
+var csv = []
 var rows = document.querySelectorAll("#tabelaOrdenada tr");
 
   for (var i = 0; i < rows.length; i++) {
   var row = [], cols = rows[i].querySelectorAll("td, th");
   
       for (var j = 0; j < cols.length; j++) 
-          row.push(cols[j].innerText);
+          row.push(cols[j].innerText)
       
-  csv.push(row.join(","));		
+  csv.push(row.join(","));	
 }
 
   // Download CSV
-  download_csv(csv.join("\n"), filename);
+  download_csv(csv.join("\n"), filename)
 }
 
 document.querySelector("#botaoDownload").addEventListener("click", function () {
-  var html = document.querySelector("#tabelaOrdenada").outerHTML;
-export_table_to_csv(html, "tabelaOrdenada.csv");
+  var html = document.querySelector("#tabelaOrdenada").outerHTML
+  export_table_to_csv(html, "tabelaOrdenada.csv")
+  document.getElementById('botaoDownload').style.display = "none"
 });
