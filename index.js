@@ -311,3 +311,7 @@ document.querySelector("#botaoDownload").addEventListener("click", function () {
   export_table_to_csv(html, "tabelaOrdenada.csv")
   document.getElementById('botaoDownload').style.display = "none"
 });
+
+function apagar() {
+  document.getElementById('field').value = " "
+}
