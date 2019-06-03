@@ -101,8 +101,8 @@ function insertTable(value, registro) {
 
   if (registro != null) {
     // imprime todo o registro na tabela
-    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" +
-      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped scrollLink\" href=\"#editar\" data-position=\"right\" data-tooltip=\"Editar registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
+    row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" + 
+      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"left\" data-tooltip=\"Adicionar registro\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
       "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
     countRegistro++
   }
@@ -166,7 +166,7 @@ function searchWord(word) {
 function editItem(value) {
   cleanTable('searchTable')
 
-  document.getElementById('editar').style.display = "block"
+  document.getElementById('#editar').style.display = "block"
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 

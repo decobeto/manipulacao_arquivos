@@ -19,6 +19,10 @@
   <nav>
     <div class="nav-wrapper teal lighten-2">
       <a href="#" class="brand-logo" style="color: #fff">Manipulação de Arquivos</a>
+      <!-- <ul class="right hide-on-med-and-down">
+        <li><a class="scrollLink effect" href="#personagensCards">Converter</a></li>
+        <li><a class="scrollLink effect" href="#personagensCards">Adicionar</a></li>
+      </ul> -->
       <div id="search" class="right">
         <form>
           <div class="input-field">
@@ -31,6 +35,17 @@
       </div>
     </div>
   </nav>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a href="#ordenar" class="btn-floating red tooltipped" data-position="left" data-tooltip="Ordenar registros"><i class="material-icons">cached</i></a></li>
+      <li><a href="#converter" class="btn-floating green"><i class="material-icons tooltipped" data-position="left" data-tooltip="Converter registros">compare_arrows</i></a></li>
+      <li><a href="#adicionar" class="btn-floating blue"><i class="material-icons tooltipped" data-position="left" data-tooltip="Adicionar registro">cloud_upload</i></a></li>
+    </ul>
+  </div>
 
   <div class="section">
     <h4 class="container light">Tabela</h4>
@@ -77,7 +92,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div id="adicionar" class="section">
     <h4 class="container light">Adicionar registro</h4>
     <div class="row container">
       <form class="col s12">
@@ -102,7 +117,7 @@
   </div>
 
 
-  <div class="section">
+  <div id="converter" class="section">
     <h4 class="container light">Converter</h4>
     <br>
     <!-- Selecionar arquivo -->
@@ -119,7 +134,7 @@
         </div>
       </form>
     </div>
-    <br />
+    <br id="ordenar"/>
     <div class="row container">
       <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">
         <i class="material-icons right">add</i>
@@ -174,16 +189,21 @@
     </div>
   </footer>
 
+  <!-- Compiled and minified JavaScript -->
   <script src="materialize.js"></script>
+  
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       M.AutoInit();
     });
+
     // Ancora
     var $doc = $('html, body');
-    $('.scrollLink').click(function () {
+    $('.scrollLink').click(function() {
       $doc.animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
+          scrollTop: $( $.attr(this, 'href') ).offset().top
       }, 1000);
       return false;
     });
