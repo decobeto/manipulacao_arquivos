@@ -138,8 +138,6 @@ var count = 0
 
 // remove todos os nós filhos de um elemento
 function cleanTable(table) {
-  console.log("limpar")
-
   var tabela = document.getElementById('searchTable')
   if (count > 0) {
     while (tabela.rows.length > 1) {
