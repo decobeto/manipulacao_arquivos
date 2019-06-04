@@ -70,7 +70,7 @@ function clearLocalStorage() {
 function salvandoNoArmazenamento() {
   event.preventDefault()
   let ultimaKey = localStorage.length
-  let keyDoItemSalvo = ultimaKey + 1
+  let keyDoItemSalvo = ultimaKey
   let campos = {
     "Nome": document.querySelector('#nome').value,
     "Informação": document.querySelector('#informacao').value
