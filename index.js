@@ -62,6 +62,8 @@ function setLocalStorage(dados) {
 }
 
 function clearLocalStorage() {
+  window.localStorage.length > 0 ? M.toast({ html: 'localStorage limpo com sucesso!' }) : M.toast({ html: 'localStorage está vazio!' })
+  
   window.localStorage.clear()
 }
 
@@ -77,6 +79,7 @@ function salvandoNoArmazenamento() {
   console.log(campos)
   document.querySelector('#nome').value = " "
   document.querySelector('#informacao').value = " "
+  M.toast({ html: 'Registro adicionado com sucesso!' })
 }
 
 // SEARCH
@@ -117,7 +120,7 @@ function insertTable(value, registro) {
   if (registro != null) {
     // imprime todo o registro na tabela
     row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" + 
-      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped\" data-position=\"left\" data-tooltip=\"Editar registro\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
+      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped scrollLink\" data-position=\"left\" data-tooltip=\"Editar registro\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
       "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
     countRegistro++
   }
