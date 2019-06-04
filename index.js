@@ -7,6 +7,21 @@ function convert() {
   } else {
     url = "arquivos-planilhas/" + document.getElementById('arquivo').value
   }
+
+  console.log(url)
+  console.log(url.substr(url.length - 4, 4))
+
+  if((url.substr(url.length - 4, 4)) !== "xlsx") {
+    M.toast({
+      html: 'É necessário selecionar uma planilha com extensão .xlsx'
+    })
+    return 
+  }
+
+  M.toast({
+    html: 'Planilha convertida com sucesso!'
+  })
+
   var oReq = new XMLHttpRequest()
   oReq.open("GET", url, true)
   oReq.responseType = "arraybuffer"
@@ -127,7 +142,9 @@ function cleanTable(table) {
     while (tabela.rows.length > 1) {
       tabela.deleteRow(1)
     }
-    console.log("limpou")
+    M.toast({
+      html: 'localStorage limpo com sucesso!'
+    }) 
   }
   count++
   init()
