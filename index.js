@@ -120,8 +120,8 @@ function insertTable(value, registro) {
   if (registro != null) {
     // imprime todo o registro na tabela
     row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" + 
-      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped scrollLink\" data-position=\"left\" data-tooltip=\"Editar registro\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
-      "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small tooltipped red lighten-1\" data-position=\"right\" data-tooltip=\"Remover registro\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
+      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small scrollLink\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
+      "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small red lighten-1\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
     countRegistro++
   }
   init()
@@ -152,23 +152,29 @@ function cleanTable(table) {
 }
 
 // pesquisa por nome
+window.localStorage.forEach(function(item){
+  
+})
+
 function searchWord(word) {
-  search: for (var item = 0; item < localStorage.length; item++) {
+  search: for (var item = 0; item < window.localStorage.length; item++) {
     // converte registro em objeto
     let reg = JSON.parse(window.localStorage.getItem(item))
 
     if (reg === null) {
+      console.log('Cai aqui')
       item++
       continue search
     }
 
+    console.log('Não, foi aqui')
+
     // busca nome ignorando maisculas e minusculas
-    var resultName = reg.Nome.search(word) > -1
-    var resultInform = reg.Informação.search(word) > -1
-    if (resultName === true) {
+    
+    if (reg.Nome.search(word) > -1) {
       insertTable(item, reg)
       countRegistro++
-    } else if (resultInform === true) {
+    } else if (reg.Informação.search(word) > -1) {
       insertTable(item, reg)
       countRegistro++
     }
