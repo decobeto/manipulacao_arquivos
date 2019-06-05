@@ -7,6 +7,12 @@ nav {
    color: #000
 }
 
+@media only screen and (min-width: 993px) {
+  nav a.sidenav-trigger {
+   display: block
+  }
+ }
+
 #editar {
   display: none
 }
