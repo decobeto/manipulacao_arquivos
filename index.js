@@ -1,6 +1,7 @@
 function convert() {
-  /* set up XMLHttpRequest */
   clearLocalStorage()
+
+  /* set up XMLHttpRequest */
   var url = ""
   if (document.getElementById('arquivo').value === " ") {
     url = "arquivos-planilhas/1.xlsx"
@@ -8,9 +9,7 @@ function convert() {
     url = "arquivos-planilhas/" + document.getElementById('arquivo').value
   }
 
-  console.log(url)
-  console.log(url.substr(url.length - 4, 4))
-
+  // verifica se extensão é igual a .xlsx
   if((url.substr(url.length - 4, 4)) !== "xlsx") {
     M.toast({
       html: 'É necessário selecionar uma planilha com extensão .xlsx'
@@ -26,6 +25,7 @@ function convert() {
   oReq.open("GET", url, true)
   oReq.responseType = "arraybuffer"
 
+  // cria array de objetos com registros
   oReq.onload = function (e) {
     var arraybuffer = oReq.response
 
@@ -48,12 +48,14 @@ function convert() {
       raw: true
     })
 
+    // manipulação do array de objetos criado
     setLocalStorage(dados)
   }
 
   oReq.send()
 }
 
+// percorre array de objetos de registros
 function setLocalStorage(dados) {
   for (var item = 0; item < dados.length; item++) {
     // armazenando dados convertidos
@@ -76,7 +78,6 @@ function salvandoNoArmazenamento() {
     "Informação": document.querySelector('#informacao').value
   }
   window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos))
-  console.log(campos)
   document.querySelector('#nome').value = " "
   document.querySelector('#informacao').value = " "
   M.toast({ html: 'Registro adicionado com sucesso!' })
@@ -162,12 +163,9 @@ function searchWord(word) {
     let reg = JSON.parse(window.localStorage.getItem(item))
 
     if (reg === null) {
-      console.log('Cai aqui')
       item++
       continue search
     }
-
-    console.log('Não, foi aqui')
 
     // busca nome ignorando maisculas e minusculas
     
@@ -193,7 +191,6 @@ function editItem(value) {
   let reg = JSON.parse(window.localStorage.getItem(value))
   // converter string nome em um array
   let name = reg.Nome.split(" ", )
-  console.log(reg)
 
   //<textarea id="nomeEdit" class="materialize-textarea"></textarea>
     //        <label for="nomeEdit">Nome</label>
@@ -295,7 +292,6 @@ function ordenar() {
 
 function montaTabelaOrdenada(arrayOrdenado) {
   let tbody = document.querySelector('#tabelaOrdenadaTbody')
-  console.log(tbody)
   let count = 0
   arrayOrdenado.forEach(function (campo) {
     let tr = document.createElement('tr')
