@@ -19,7 +19,8 @@ a.brand-logo.center {color: rgba(0,0,0,0.5); }
 .section {padding-top: 2rem; padding-bottom: 5rem; }
 
 nav .brand-logo {
-  padding-left: 2rem;
+  padding-left: 5rem;
+  font-family: 'Oswald', sans-serif; 
 }
 
 h4 {

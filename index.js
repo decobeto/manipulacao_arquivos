@@ -120,8 +120,8 @@ function insertTable(value, registro) {
   if (registro != null) {
     // imprime todo o registro na tabela
     row.innerHTML = "<td>" + value + "</td> <td>" + registro.Nome + "</td> <td>" + registro.Informação + "</td>" + 
-      "<a onclick=\"editItem(" + value + ")\" class=\"waves-effect waves-light btn-small scrollLink\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
-      "<a onclick=\"removeItem(" + value + ")\" class=\"waves-effect waves-light btn-small red lighten-1\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
+      "<a onclick=\"editItem(" + value + ")\" title=\"Editar\" class=\"waves-effect waves-light btn-small scrollLink\" href=\"#editar\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">edit</i></a>" +
+      "<a onclick=\"removeItem(" + value + ")\" title=\"Remover\" class=\"waves-effect waves-light btn-small red lighten-1\" style=\"margin-top: 0.6rem;margin-right: 1rem;\"><i class=\"material-icons\">delete</i></a>"
     countRegistro++
   }
   init()
@@ -153,7 +153,7 @@ function cleanTable(table) {
 
 // pesquisa por nome
 window.localStorage.forEach(function(item){
-  
+
 })
 
 function searchWord(word) {
