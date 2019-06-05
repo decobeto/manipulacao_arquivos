@@ -35,19 +35,17 @@
   </nav>
 
   <ul id="slide-out" class="sidenav">
-    <li><div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
+    <li>
+      <div class="user-view">
+        <img class="circle" src="favicon.png">
       </div>
-      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </li>
+    <li><a href="#ordenar" class="btn-floating cyan tooltipped scrollLink" data-position="left"
+        data-tooltip="Ordenar registros"><i class="material-icons">cached</i></a></li>
+    <li><a href="#converter" class="btn-floating cyan darken-1 scrollLink"><i class="material-icons tooltipped"
+          data-position="left" data-tooltip="Converter registros">compare_arrows</i></a></li>
+    <li><a href="#adicionar" class="btn-floating cyan darken-2 scrollLink"><i class="material-icons tooltipped"
+          data-position="left" data-tooltip="Adicionar registro">note_add</i></a></li>
   </ul>
 
   <div class="fixed-action-btn">
@@ -55,9 +53,12 @@
       <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-      <li><a href="#ordenar" class="btn-floating cyan tooltipped scrollLink" data-position="left" data-tooltip="Ordenar registros"><i class="material-icons">cached</i></a></li>
-      <li><a href="#converter" class="btn-floating cyan darken-1 scrollLink"><i class="material-icons tooltipped" data-position="left" data-tooltip="Converter registros">compare_arrows</i></a></li>
-      <li><a href="#adicionar" class="btn-floating cyan darken-2 scrollLink"><i class="material-icons tooltipped" data-position="left" data-tooltip="Adicionar registro">note_add</i></a></li>
+      <li><a href="#ordenar" class="btn-floating cyan tooltipped scrollLink" data-position="left"
+          data-tooltip="Ordenar registros"><i class="material-icons">cached</i></a></li>
+      <li><a href="#converter" class="btn-floating cyan darken-1 scrollLink"><i class="material-icons tooltipped"
+            data-position="left" data-tooltip="Converter registros">compare_arrows</i></a></li>
+      <li><a href="#adicionar" class="btn-floating cyan darken-2 scrollLink"><i class="material-icons tooltipped"
+            data-position="left" data-tooltip="Adicionar registro">note_add</i></a></li>
     </ul>
   </div>
 
@@ -148,7 +149,7 @@
         </div>
       </form>
     </div>
-    <br id="ordenar"/>
+    <br id="ordenar" />
     <div class="row container">
       <button type="submit" class="btn waves-effect waves-light" name="action" onclick="convert()">
         <i class="material-icons right">add</i>
@@ -207,7 +208,7 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="materialize.js"></script>
-  
+
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
@@ -217,18 +218,19 @@
 
     // Ancora
     var $doc = $('html, body');
-    $('.scrollLink').click(function() {
+    $('.scrollLink').click(function () {
       $doc.animate({
-          scrollTop: $( $.attr(this, 'href') ).offset().top
+        scrollTop: $($.attr(this, 'href')).offset().top
       }, 1000);
       return false;
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.sidenav');
       var instances = M.Sidenav.init(elems, options);
     });
   </script>
   <script src="index.js"></script>
 </body>
+
 </html>
