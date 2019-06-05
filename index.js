@@ -190,8 +190,37 @@ function searchWord(word) {
 function editItem(value) {
   cleanTable('searchTable')
 
+  let reg = JSON.parse(window.localStorage.getItem(value))
+  // converter string nome em um array
+  let name = reg.Nome.split(" ", )
+  console.log(reg)
+
+  //<textarea id="nomeEdit" class="materialize-textarea"></textarea>
+    //        <label for="nomeEdit">Nome</label>
+
   document.getElementById('editar').style.display = "block"
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
+  
+  name = document.getElementById('name')
+  input = document.createElement('input')
+  input.setAttribute('type','text')
+  input.setAttribute('id','nomeEdit')
+  input.setAttribute('value', reg.Nome)
+  input.setAttribute('class','materialize-textarea')
+  name.appendChild(input)
+  input.innerHTML += "<label for=\"nomeEdit\">Nome</label>"
+
+  informacao = document.getElementById('information')
+  input = document.createElement('input')
+  input.setAttribute('type', 'text')
+  input.setAttribute('id', 'informacaoEdit')
+  input.setAttribute('value', reg.Informação)
+  input.setAttribute('class', 'materialize-textarea')
+  information.appendChild(input)
+  input.innerHTML += "<label for=\"informacaoEdit\">Informação</label>"
+
+  //cdText.innerHTML = "<input type=\"text\" id=\"nameEdit\" value=" + reg.Nome + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
+  //document.getElementById('information').innerHTML = "<input type=\"text\" id=\"informationEdit\" value=" + reg.Informação + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 
 function editar(value) {
