@@ -32,21 +32,24 @@
         </form>
       </div>
     </div>
-  </nav>
+  </nav> <!-- Cabeçalho -->
 
   <ul id="slide-out" class="sidenav">
-    <li>
+    <li class="logo">
       <div class="user-view">
         <img class="circle" src="favicon.png">
       </div>
     </li>
-    <li><a href="#ordenar" class="btn-floating cyan tooltipped scrollLink" data-position="left"
-        data-tooltip="Ordenar registros"><i class="material-icons">cached</i></a></li>
-    <li><a href="#converter" class="btn-floating cyan darken-1 scrollLink"><i class="material-icons tooltipped"
-          data-position="left" data-tooltip="Converter registros">compare_arrows</i></a></li>
-    <li><a href="#adicionar" class="btn-floating cyan darken-2 scrollLink"><i class="material-icons tooltipped"
-          data-position="left" data-tooltip="Adicionar registro">note_add</i></a></li>
-  </ul>
+    <li><a href="#!"><i class="material-icons">search</i>Pesquisar</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#!"><i class="material-icons">compare_arrows</i>Converter registros</a></li>
+    <li><a href="#!"><i class="material-icons">note_add</i>Adicionar registro</a></li>
+    <li><a href="#!"><i class="material-icons">cached</i>Ordenar registros</a></li>
+    <li><a class="subheader">© 2019 Maniputação de Arquivos </a></li>
+    <li><a class="waves-effect" href="#">
+      Estrutura de Dados
+    </a></li>
+  </ul> <!-- Menu lateral -->
 
   <div class="fixed-action-btn">
     <a class="btn-floating btn-large cyan darken-3 pulse">
@@ -60,7 +63,7 @@
       <li><a href="#adicionar" class="btn-floating cyan darken-2 scrollLink"><i class="material-icons tooltipped"
             data-position="left" data-tooltip="Adicionar registro">note_add</i></a></li>
     </ul>
-  </div>
+  </div> <!-- Botão flutuante pulse -->
 
   <div class="section">
     <h4 class="container light">Tabela</h4>
@@ -77,7 +80,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> <!-- Tabela Resultado Pesquisa -->
 
   <div id="editar" class="section">
     <h4 class="container light">Editar registro </h4>
@@ -86,14 +89,8 @@
         <div class="row">
           <div id="record" class="input-field col s3">
           </div>
-          <div id="name" class="input-field col s9">
-            <!-- <textarea id="nomeEdit" class="materialize-textarea"></textarea>
-            <label for="nomeEdit">Nome</label> -->
-          </div>
-          <div id="information" class="input-field col s12">
-            <!-- <textarea id="informacaoEdit" class="materialize-textarea"></textarea>
-            <label for="informacaoEdit">Informação</label> -->
-          </div>
+          <div id="name" class="input-field col s9"> </div>
+          <div id="information" class="input-field col s12"> </div>
         </div>
         <button class="btn waves-effect waves-light" type="button" name="action"
           onclick="editar(document.getElementById('valueEdit').value)">Editar
@@ -105,7 +102,7 @@
         </button>
       </form>
     </div>
-  </div>
+  </div> <!-- Editar Registro -->
 
   <div id="adicionar" class="section">
     <h4 class="container light">Adicionar registro</h4>
@@ -129,8 +126,7 @@
         </button>
       </form>
     </div>
-  </div>
-
+  </div> <!-- Adicionar Registro -->
 
   <div id="converter" class="section">
     <h4 class="container light">Converter</h4>
@@ -164,7 +160,7 @@
         Ordenar
       </button>
     </div>
-  </div>
+  </div> <!-- Converter Arquivo -->
 
   <div class="section">
     <div class="row container">
@@ -187,7 +183,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> <!-- Tabela registros ordenados -->
 
   <footer class="page-footer footer teal lighten-2">
     <div class="container">
@@ -204,7 +200,7 @@
         © 2019 Maniputação de Arquivos
       </div>
     </div>
-  </footer>
+  </footer> <!-- Rodapé -->
 
   <!-- Compiled and minified JavaScript -->
   <script src="materialize.js"></script>

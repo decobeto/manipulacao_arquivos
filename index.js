@@ -181,8 +181,38 @@ function cleanTable(table) {
   init()
 }
 
-// ---------------------- EDITAR REGISTRO ----------------------
+// pesquisa por nome
+// window.localStorage.forEach(function(item){
 
+// })
+
+function searchWord(word) {
+  search: for (var item = 0; item < window.localStorage.length; item++) {
+    // converte registro em objeto
+    let reg = JSON.parse(window.localStorage.getItem(item))
+
+    if (reg === null) {
+      item++
+      continue search
+    }
+
+    // busca nome ignorando maisculas e minusculas
+    
+    if (reg.Nome.search(word) > -1) {
+      insertTable(item, reg)
+      countRegistro++
+    } else if (reg.Informação.search(word) > -1) {
+      insertTable(item, reg)
+      countRegistro++
+    }
+  }
+
+  if (countRegistro === 0) {
+    insertTableNull('Não existe registro correspondente ao valor informado')
+  }
+}
+
+// EDITAR ITEM
 function editItem(value) {
   cleanTable('searchTable')
 
@@ -261,10 +291,6 @@ function removeItem(value) {
 function init() {
   M.AutoInit()
 }
-
-// console.log(JSON.parse(window.localStorage.getItem(item)))
-//         var registro = JSON.parse(window.localStorage.getItem(item))
-//         console.log(registro.Nome)
 
 function ordenar() {
   cleanTable('tabelaOrdenada')
