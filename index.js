@@ -215,6 +215,9 @@ function searchWord(word) {
 // EDITAR ITEM
 function editItem(value) {
   cleanTable('searchTable')
+  removeChildren('record')
+  removeChildren('name')
+  removeChildren('information')
 
   let reg = JSON.parse(window.localStorage.getItem(value))
   
@@ -223,7 +226,7 @@ function editItem(value) {
   let record = document.getElementById('record')
   inputRecord = document.createElement('input')
   inputRecord.setAttribute('type', 'text')
-  input.setAttribute('id', 'record')
+  input.setAttribute('id', 'recordEdit')
   input.setAttribute('value', value)
   input.setAttribute('disabled', 'disabled')
   input.setAttribute('class', 'materialize-textarea')
@@ -249,6 +252,15 @@ function editItem(value) {
   input.innerHTML += "<label for=\"informacaoEdit\">Informação</label>"
 }
 
+// remover todos os nós filhos de um elemento
+function removeChildren(node) {
+  let element = document.getElementById(node)
+  while (element.firstChild) {
+    element.removeChild(element.firstChild)
+  }
+}
+
+
 function editar(value) {
   document.getElementById('editar').style.display = "none"
   event.preventDefault()
@@ -257,9 +269,6 @@ function editar(value) {
     "Informação": document.querySelector('#informacaoEdit').value
   }
   window.localStorage.setItem(value, JSON.stringify(campos))
-
-  document.querySelector('#nomeEdit').value = " "
-  document.querySelector('#informacaoEdit').value = " "
 
   M.toast({
     html: 'Registro ' + value + ' editado!'
