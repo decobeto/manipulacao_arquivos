@@ -217,13 +217,12 @@ function editItem(value) {
   cleanTable('searchTable')
 
   let reg = JSON.parse(window.localStorage.getItem(value))
-
-  document.getElementById('editar').style.display = "block"
-  // document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
   
-  record = document.getElementById('record')
-  input = document.createElement('input')
-  input.setAttribute('type', 'text')
+  document.getElementById('editar').style.display = "block"
+  
+  let record = document.getElementById('record')
+  inputRecord = document.createElement('input')
+  inputRecord.setAttribute('type', 'text')
   input.setAttribute('id', 'record')
   input.setAttribute('value', value)
   input.setAttribute('disabled', 'disabled')
@@ -231,7 +230,7 @@ function editItem(value) {
   record.appendChild(input)
   input.innerHTML += "<label for=\"recordEdit\">Registro</label>"
 
-  name = document.getElementById('name')
+  let name = document.getElementById('name')
   input = document.createElement('input')
   input.setAttribute('type','text')
   input.setAttribute('id','nomeEdit')
@@ -240,7 +239,7 @@ function editItem(value) {
   name.appendChild(input)
   input.innerHTML += "<label for=\"nomeEdit\">Nome</label>"
 
-  informacao = document.getElementById('information')
+  let information = document.getElementById('information')
   input = document.createElement('input')
   input.setAttribute('type', 'text')
   input.setAttribute('id', 'informacaoEdit')
