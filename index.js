@@ -184,16 +184,10 @@ function searchWord(word) {
 }
 
 // EDITAR ITEM
-
 function editItem(value) {
   cleanTable('searchTable')
 
   let reg = JSON.parse(window.localStorage.getItem(value))
-  // converter string nome em um array
-  let name = reg.Nome.split(" ", )
-
-  //<textarea id="nomeEdit" class="materialize-textarea"></textarea>
-    //        <label for="nomeEdit">Nome</label>
 
   document.getElementById('editar').style.display = "block"
   document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
@@ -216,8 +210,6 @@ function editItem(value) {
   information.appendChild(input)
   input.innerHTML += "<label for=\"informacaoEdit\">Informação</label>"
 
-  //cdText.innerHTML = "<input type=\"text\" id=\"nameEdit\" value=" + reg.Nome + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
-  //document.getElementById('information').innerHTML = "<input type=\"text\" id=\"informationEdit\" value=" + reg.Informação + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 
 function editar(value) {
@@ -261,10 +253,6 @@ function removeItem(value) {
 function init() {
   M.AutoInit()
 }
-
-// console.log(JSON.parse(window.localStorage.getItem(item)))
-//         var registro = JSON.parse(window.localStorage.getItem(item))
-//         console.log(registro.Nome)
 
 function ordenar() {
   cleanTable('tabelaOrdenada')
