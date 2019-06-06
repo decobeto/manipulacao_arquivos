@@ -197,7 +197,6 @@ function searchWord(word) {
     }
 
     // busca nome ignorando maisculas e minusculas
-    
     if (reg.Nome.search(word) > -1) {
       insertTable(item, reg)
       countRegistro++
