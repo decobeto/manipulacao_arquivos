@@ -69,7 +69,9 @@ function clearLocalStorage() {
   window.localStorage.clear()
 }
 
-function salvandoNoArmazenamento() {
+// ---------------------- FORMULÁRIO ----------------------
+
+function savingLocalStorage() {
   event.preventDefault()
   let ultimaKey = localStorage.length
   let keyDoItemSalvo = ultimaKey
@@ -77,13 +79,15 @@ function salvandoNoArmazenamento() {
     "Nome": document.querySelector('#nome').value,
     "Informação": document.querySelector('#informacao').value
   }
+  
   window.localStorage.setItem(keyDoItemSalvo, JSON.stringify(campos))
   document.querySelector('#nome').value = " "
   document.querySelector('#informacao').value = " "
   M.toast({ html: 'Registro adicionado com sucesso!' })
 }
 
-// SEARCH
+// ---------------------- PESQUISA ----------------------
+
 // captura input do campo search
 var input = document.getElementById('field')
 var countRegistro = 0
@@ -98,19 +102,44 @@ input.addEventListener("keyup", function (event) {
     //document.getElementById("btn").click()
   }
 })
+// window.localStorage.forEach(function(item){
 
-function inputField() {
-  return document.getElementById('field').value
-}
+// })
 
 function searchKey(value) {
   let registro = JSON.parse(window.localStorage.getItem(value))
 
   cleanTable()
-
-  // typeof(value) === 'number' ? insertTable(value,registro) : searchWord(value) 
+ 
   insertTable(value, registro)
   searchWord(value)
+}
+
+// pesquisa por nome
+function searchWord(word) {
+  search: for (var item = 0; item < window.localStorage.length; item++) {
+    // converte registro em objeto
+    let reg = JSON.parse(window.localStorage.getItem(item))
+
+    if (reg === null) {
+      item++
+      continue search
+    }
+
+    // busca nome ignorando maisculas e minusculas
+    
+    if (reg.Nome.search(word) > -1) {
+      insertTable(item, reg)
+      countRegistro++
+    } else if (reg.Informação.search(word) > -1) {
+      insertTable(item, reg)
+      countRegistro++
+    }
+  }
+
+  if (countRegistro === 0) {
+    insertTableNull('Não existe registro correspondente ao valor informado')
+  }
 }
 
 // retornar valores da busca para a tabela
@@ -152,52 +181,26 @@ function cleanTable(table) {
   init()
 }
 
-// pesquisa por nome
-window.localStorage.forEach(function(item){
-
-})
-
-function searchWord(word) {
-  search: for (var item = 0; item < window.localStorage.length; item++) {
-    // converte registro em objeto
-    let reg = JSON.parse(window.localStorage.getItem(item))
-
-    if (reg === null) {
-      item++
-      continue search
-    }
-
-    // busca nome ignorando maisculas e minusculas
-    
-    if (reg.Nome.search(word) > -1) {
-      insertTable(item, reg)
-      countRegistro++
-    } else if (reg.Informação.search(word) > -1) {
-      insertTable(item, reg)
-      countRegistro++
-    }
-  }
-
-  if (countRegistro === 0) {
-    insertTableNull('Não existe registro correspondente ao valor informado')
-  }
-}
-
-// EDITAR ITEM
+// ---------------------- EDITAR REGISTRO ----------------------
 
 function editItem(value) {
   cleanTable('searchTable')
 
   let reg = JSON.parse(window.localStorage.getItem(value))
-  // converter string nome em um array
-  let name = reg.Nome.split(" ", )
-
-  //<textarea id="nomeEdit" class="materialize-textarea"></textarea>
-    //        <label for="nomeEdit">Nome</label>
 
   document.getElementById('editar').style.display = "block"
-  document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
+  // document.getElementById('value').innerHTML = "<input type=\"text\" disabled id=\"valueEdit\" value=" + value + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
   
+  record = document.getElementById('record')
+  input = document.createElement('input')
+  input.setAttribute('type', 'text')
+  input.setAttribute('id', 'record')
+  input.setAttribute('value', value)
+  input.setAttribute('disabled', 'disabled')
+  input.setAttribute('class', 'materialize-textarea')
+  record.appendChild(input)
+  input.innerHTML += "<label for=\"recordEdit\">Registro</label>"
+
   name = document.getElementById('name')
   input = document.createElement('input')
   input.setAttribute('type','text')
@@ -215,9 +218,6 @@ function editItem(value) {
   input.setAttribute('class', 'materialize-textarea')
   information.appendChild(input)
   input.innerHTML += "<label for=\"informacaoEdit\">Informação</label>"
-
-  //cdText.innerHTML = "<input type=\"text\" id=\"nameEdit\" value=" + reg.Nome + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
-  //document.getElementById('information').innerHTML = "<input type=\"text\" id=\"informationEdit\" value=" + reg.Informação + " class=\"materialize-textarea\" /><label for=\"value\"></label>"
 }
 
 function editar(value) {
