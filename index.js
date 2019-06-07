@@ -173,9 +173,9 @@ function cleanTable(table) {
     while (tabela.rows.length > 1) {
       tabela.deleteRow(1)
     }
-    M.toast({
-      html: 'localStorage limpo com sucesso!'
-    }) 
+    // M.toast({
+    //   html: 'localStorage limpo com sucesso!'
+    // }) 
   }
   count++
   init()
