@@ -108,15 +108,15 @@
     <div class="row container">
       <form class="col s12">
         <div class="row">
-          <div class="input-field col s12">
-            <input type="text" id="nome" class="materialize-textarea" />
+          <div class="input-field inline col m12">
+            <input id="nome" type="text" class="validate" required>
             <label for="nome">Nome</label>
+            <span class="helper-text" data-error="Errado" data-success="Correto">Digite o nome do registro</span>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="informacao" class="materialize-textarea"></textarea>
+          <div class="input-field inline col m12">
+            <input id="informacao" type="text" class="validate">
             <label for="informacao">Informação</label>
+            <span class="helper-text" data-error="Errado" data-success="Correto">Digite a informação do registro</span>
           </div>
         </div>
         <button class="btn waves-effect waves-light" type="button" name="action"

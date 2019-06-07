@@ -223,8 +223,8 @@ function editItem(value) {
   document.getElementById('editar').style.display = "block"
   
   let record = document.getElementById('record')
-  inputRecord = document.createElement('input')
-  inputRecord.setAttribute('type', 'text')
+  input = document.createElement('input')
+  input.setAttribute('type', 'text')
   input.setAttribute('id', 'recordEdit')
   input.setAttribute('value', value)
   input.setAttribute('disabled', 'disabled')
