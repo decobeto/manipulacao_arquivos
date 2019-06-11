@@ -403,3 +403,5 @@ function apagar() {
 function helpSection() {
   document.getElementById('help').style.display === "none" || document.getElementById('help').style.display === "" ? document.getElementById('help').style.display = "block" : document.getElementById('help').style.display = "none"
 }
+
+function nova() {}
